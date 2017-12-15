@@ -1,6 +1,7 @@
-import * as devEnvironment from './environment';
-
 export const environment = {
-  ...devEnvironment,
-  production: true
+  production: true,
+  tmdbApiKey: '9198fa6d9a9713bc6b03ee9582525917 ',
+  moviesEndpoints: {
+    popular: 'https://api.themoviedb.org/3/movie/popular'
+  }  
 };
