@@ -4,5 +4,9 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  tmdbApiKey: '9198fa6d9a9713bc6b03ee9582525917 ',
+  moviesEndpoints: {
+    popular: 'https://api.themoviedb.org/3/movie/popular'
+  }  
 };
