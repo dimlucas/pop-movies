@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ErrorHandlerService } from 'app/services/error-handler.service';
 
 @Component({
     selector: 'app-root',
@@ -7,7 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-    constructor() {
-           
+    constructor(private _errorHandler: ErrorHandlerService) {
+        this._errorHandler.configure({
+            badRequest: "Request to tMDB is malformed",
+            internalServerError: "tMDB server unavailable",
+            notFound: "Nothing found",
+            unauthorized: "You are not allowed to view this content",
+            unknown: "Something went wrong"
+        });
     }
 }
