@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { MoviesListComponent } from 'app/components/movies-list/movies-list.component';
 import { MoviesSearchComponent } from 'app/components/movies-search/movies-search.component';
 import { MovieDetailsComponent } from 'app/components/movie-details/movie-details.component';
+import { MoviesService } from 'app/services/movies.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { MovieDetailsComponent } from 'app/components/movie-details/movie-detail
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [MoviesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
