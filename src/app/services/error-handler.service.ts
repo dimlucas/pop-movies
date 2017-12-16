@@ -33,22 +33,27 @@ export class ErrorHandlerService {
     }
 
     handleHttpError(error: HttpErrorResponse) {
-        switch(error.status) {
-            case 400:
-                toastr.error(this.options.badRequest);
-                break;
-            case 401:
-                toastr.error(this.options.unauthorized);
-                break;
-            case 404:
-                toastr.error(this.options.notFound);
-                break;
-            case 500:   
-                toastr.error(this.options.internalServerError);
-                break;
-            default:
-                toastr.error(this.options.unknown);
-                break;
+        if(error.status) {
+            switch(error.status) {
+                case 400:
+                    toastr.error(this.options.badRequest);
+                    break;
+                case 401:
+                    toastr.error(this.options.unauthorized);
+                    break;
+                case 404:
+                    toastr.error(this.options.notFound);
+                    break;
+                case 500:   
+                    toastr.error(this.options.internalServerError);
+                    break;
+                default:
+                    toastr.error(this.options.unknown);
+                    break;
+            }
+        }
+        else {
+            toastr.error(this.options.unknown);
         }
     }
 }
