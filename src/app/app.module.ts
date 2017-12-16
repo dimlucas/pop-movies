@@ -7,6 +7,7 @@ import { MoviesListComponent } from 'app/components/movies-list/movies-list.comp
 import { MoviesSearchComponent } from 'app/components/movies-search/movies-search.component';
 import { MovieDetailsComponent } from 'app/components/movie-details/movie-details.component';
 import { MoviesService } from 'app/services/movies.service';
+import { ErrorHandlerService } from 'app/services/error-handler.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { MoviesService } from 'app/services/movies.service';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [MoviesService],
+  providers: [MoviesService, ErrorHandlerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
