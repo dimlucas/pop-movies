@@ -11,6 +11,7 @@ import { ErrorHandlerService } from 'app/services/error-handler.service';
 import { TmdbInterceptor } from 'app/interceptors/tmdb-interceptor';
 import { NavbarComponent } from 'app/components/navbar/navbar.component';
 import { DateToYearPipe } from 'app/pipes/date-to-year.pipe';
+import { PosterToUrlPipe } from 'app/pipes/poster-to-url';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { DateToYearPipe } from 'app/pipes/date-to-year.pipe';
         MoviesSearchComponent,
         MovieDetailsComponent,
         NavbarComponent,
-        DateToYearPipe
+        DateToYearPipe,
+        PosterToUrlPipe
     ],
     imports: [
         BrowserModule,

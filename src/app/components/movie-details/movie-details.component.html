@@ -1,1 +1,15 @@
-<h4 *ngIf="movie">{{movie.title}} ({{movie.release_date | dateToYear}})</h4>
+<div class="row" *ngIf="!movie">
+    <div class="col-12 d-flex justify-content-center align-items-center">
+        <h4 *ngIf="movie">{{movie.title}} ({{movie.release_date | dateToYear}})</h4>
+    </div>
+</div>
+<div class="row" *ngIf="movie">
+    <div class="col-4">
+        <img [src]="movie.poster_path | posterToUrl" alt="movie poster">
+    </div>
+    <div class="col-8">
+        <p>
+            {{movie.overview}}
+        </p>
+    </div>
+</div>
