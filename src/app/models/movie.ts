@@ -6,4 +6,5 @@ export interface Movie {
     poster_path: string;
     release_date: string;
     active: boolean;
+    vote_average: number;
 }

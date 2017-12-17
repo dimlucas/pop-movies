@@ -8,8 +8,22 @@
         <img [src]="movie.poster_path | posterToUrl" alt="movie poster">
     </div>
     <div class="col-8">
+        <h4>{{movie.title}} ({{movie.release_date | dateToYear}})</h4>
         <p>
             {{movie.overview}}
+        </p>
+        <p>
+            <i class="fa fa-star-half" *ngIf="movie.vote_average<2" aria-hidden="true"></i>
+            <i class="fa fa-star" *ngIf="movie.vote_average>=2" aria-hidden="true"></i>
+            <i class="fa fa-star-half" *ngIf="movie.vote_average>=2 && movie.vote_average<4" aria-hidden="true"></i>
+            <i class="fa fa-star" *ngIf="movie.vote_average>=4" aria-hidden="true"></i>
+            <i class="fa fa-star-half" *ngIf="movie.vote_average>=4 && movie.vote_average<6" aria-hidden="true"></i>
+            <i class="fa fa-star" *ngIf="movie.vote_average>=6" aria-hidden="true"></i>
+            <i class="fa fa-star-half" *ngIf="movie.vote_average>=6 && movie.vote_average<8" aria-hidden="true"></i>
+            <i class="fa fa-star" *ngIf="movie.vote_average>=8" aria-hidden="true"></i>
+            <i class="fa fa-star-half" *ngIf="movie.vote_average>=8 && movie.vote_average<10" aria-hidden="true"></i>
+            <i class="fa fa-star" *ngIf="movie.vote_average==10" aria-hidden="true"></i>
+            {{movie.vote_average}}
         </p>
     </div>
 </div>
