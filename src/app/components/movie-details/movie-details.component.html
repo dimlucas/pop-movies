@@ -4,10 +4,10 @@
     </div>
 </div>
 <div class="row" *ngIf="movie">
-    <div class="col-4">
+    <div class="col-md-4 mt-2 mt-md-0">
         <img [src]="movie.poster_path | posterToUrl" alt="movie poster">
     </div>
-    <div class="col-8">
+    <div class="col-md-8">
         <h4>{{movie.title}} ({{movie.release_date | dateToYear}})</h4>
         <p>
             {{movie.overview}}
