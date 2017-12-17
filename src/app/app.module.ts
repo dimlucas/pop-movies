@@ -9,13 +9,15 @@ import { MovieDetailsComponent } from 'app/components/movie-details/movie-detail
 import { MoviesService } from 'app/services/movies.service';
 import { ErrorHandlerService } from 'app/services/error-handler.service';
 import { TmdbInterceptor } from 'app/interceptors/tmdb-interceptor';
+import { NavbarComponent } from 'app/components/navbar/navbar.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         MoviesListComponent,
         MoviesSearchComponent,
-        MovieDetailsComponent
+        MovieDetailsComponent,
+        NavbarComponent
     ],
     imports: [
         BrowserModule,
