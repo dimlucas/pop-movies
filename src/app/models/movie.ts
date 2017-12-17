@@ -3,5 +3,6 @@ export interface Movie {
     title: string;
     overview: string;
     popularity: number;
-    posterPath: string;
+    poster_path: string;
+    active: boolean;
 }

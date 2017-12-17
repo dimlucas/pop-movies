@@ -1,1 +1,6 @@
-Movies List
+<ul class="list-group">
+    <li class="list-group-item list-group-item-action" 
+        *ngFor="let movie of _service.movies"
+        [ngClass]="{'active': movie.active}"
+        (click)="_service.selectMovie(movie)">{{movie.title}}</li>
+</ul>

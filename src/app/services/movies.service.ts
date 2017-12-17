@@ -17,7 +17,13 @@ export class MoviesService {
         
     }    
 
+    deactivateMovies() {
+        this.movies.forEach(m => m.active  = false);
+    }
+
     selectMovie(movie: Movie) {
+        this.deactivateMovies();
+        movie.active = true;
         this.selectedMovie = movie;
     }
 
