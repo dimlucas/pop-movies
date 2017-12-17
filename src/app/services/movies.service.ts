@@ -19,7 +19,7 @@ export class MoviesService {
 
     get movies(): Movie[] {
         if(this.searchTerm && this.searchTerm.length > 0) {
-            return this._movies.filter(m => m.title.toUpperCase().includes(this.searchTerm));
+            return this._movies.filter(m => m.title.toUpperCase().includes(this.searchTerm.toUpperCase()));
         }
         else {
             return this._movies;
