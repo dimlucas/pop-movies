@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class MoviesService {
-    movies: Movie[] = [];
+    private _movies: Movie[] = [];
     loading: boolean = false;
     selectedMovie: Movie;
     searchTerm: string;
@@ -17,8 +17,17 @@ export class MoviesService {
         
     }    
 
+    get movies(): Movie[] {
+        if(this.searchTerm && this.searchTerm.length > 0) {
+            return this._movies.filter(m => m.title.toUpperCase().includes(this.searchTerm));
+        }
+        else {
+            return this._movies;
+        }
+    }
+
     deactivateMovies() {
-        this.movies.forEach(m => m.active  = false);
+        this._movies.forEach(m => m.active  = false);
     }
 
     selectMovie(movie: Movie) {
@@ -30,8 +39,8 @@ export class MoviesService {
     refresh() {
         this.loading = true;
         this._http.get(environment.moviesEndpoints.popular).toPromise().then(response => {
-            this.movies = (response as any).results;
-            console.log("Movies fetched: ", this.movies);
+            this._movies = (response as any).results;
+            console.log("Movies fetched: ", this._movies);
             this.loading = false;
         }).catch(err => {
             this._errorHandler.handleHttpError(err);
