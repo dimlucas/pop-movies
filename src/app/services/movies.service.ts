@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Movie } from '../models/movie';
+import { environment } from '../../environments/environment';
+
 
 @Injectable()
 export class MoviesService {
@@ -34,10 +36,10 @@ export class MoviesService {
     }
 
     selectMovie(movie: Movie) {
-        throw new Error("Method not implemented");
+        this.selectedMovie = movie;
     }
 
     private fetchMovies(): Observable<Movie[]> {
-        throw new Error("Not Implemented");
+        
     }
 }
