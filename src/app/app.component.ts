@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ErrorHandlerService } from 'app/services/error-handler.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
