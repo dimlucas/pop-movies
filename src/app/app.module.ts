@@ -22,13 +22,13 @@ import { TmdbInterceptor } from 'app/interceptors/tmdb-interceptor';
         HttpClientModule
     ],
     providers: [
-        MoviesService,
-        ErrorHandlerService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TmdbInterceptor,
             multi: true
-        }
+        },
+        MoviesService,
+        ErrorHandlerService
     ],
     bootstrap: [AppComponent]
 })

@@ -3,43 +3,32 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Movie } from '../models/movie';
 import { environment } from '../../environments/environment';
-
+import { ErrorHandlerService } from 'app/services/error-handler.service';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class MoviesService {
-    private _movies: Movie[];
+    movies: Movie[] = [];
+    loading: boolean = false;
     selectedMovie: Movie;
     searchTerm: string;
 
-    constructor(private http: HttpClient) {
+    constructor(private _http: HttpClient, private _errorHandler: ErrorHandlerService) {
         
     }    
-
-    get movies(): Observable<Movie[]> {
-        if(this._movies) {
-            return Observable.create((observer) => {
-                if(this.searchTerm) {
-                    observer.next(this._movies.filter(movie => {
-                        return movie.title.toUpperCase().includes(this.searchTerm);
-                    }));
-                }
-                else {
-                    observer.next(this._movies);
-                }
-                observer.next(this._movies);
-                observer.complete();
-            });
-        }
-        else {
-            return this.fetchMovies();
-        }
-    }
 
     selectMovie(movie: Movie) {
         this.selectedMovie = movie;
     }
 
-    private fetchMovies(): Observable<Movie[]> {
-        
+    refresh() {
+        this.loading = true;
+        this._http.get(environment.moviesEndpoints.popular).toPromise().then(response => {
+            this.movies = (response as any).results;
+            this.loading = false;
+        }).catch(err => {
+            this._errorHandler.handleHttpError(err);
+        });
     }
+
 }
