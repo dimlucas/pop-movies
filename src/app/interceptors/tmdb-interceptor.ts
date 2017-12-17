@@ -6,6 +6,7 @@ import { environment } from "environments/environment";
 
 export class TmdbInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
+        req = req.clone();
         req.params.append("api_key", environment.tmdbApiKey);
         return next.handle(req);
     }
