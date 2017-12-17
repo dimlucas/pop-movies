@@ -31,6 +31,7 @@ export class MoviesService {
         this.loading = true;
         this._http.get(environment.moviesEndpoints.popular).toPromise().then(response => {
             this.movies = (response as any).results;
+            console.log("Movies fetched: ", this.movies);
             this.loading = false;
         }).catch(err => {
             this._errorHandler.handleHttpError(err);

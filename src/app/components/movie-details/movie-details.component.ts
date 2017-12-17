@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { MoviesService } from 'app/services/movies.service';
 
 @Component({
     selector: 'movie-details',
@@ -6,5 +7,7 @@ import {Component} from '@angular/core';
     styleUrls: ['./movie-details.component.scss']
 })
 export class MovieDetailsComponent {
+    constructor(_service: MoviesService) {
 
+    }
 }

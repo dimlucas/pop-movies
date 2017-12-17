@@ -1,6 +1,6 @@
 <ul class="list-group">
     <li class="list-group-item list-group-item-action" 
-        *ngFor="let movie of _service.movies"
+        *ngFor="let movie of service.movies"
         [ngClass]="{'active': movie.active}"
-        (click)="_service.selectMovie(movie)">{{movie.title}}</li>
+        (click)="service.selectMovie(movie)">{{movie.title}}</li>
 </ul>

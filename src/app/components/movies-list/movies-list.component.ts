@@ -7,11 +7,11 @@ import { MoviesService } from '../../services/movies.service';
     styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
-    constructor(private _service: MoviesService) {
+    constructor(public service: MoviesService) {
 
     }
 
     ngOnInit() {
-        this._service.refresh();
+        this.service.refresh();
     }
 }
