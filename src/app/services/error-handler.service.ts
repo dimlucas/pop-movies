@@ -13,7 +13,7 @@ export interface ErrorHandlerServiceOptions  {
 @Injectable()
 export class ErrorHandlerService {
     
-    private options: ErrorHandlerServiceOptions = {
+    private _options: ErrorHandlerServiceOptions = {
         badRequest:  "Bad Request",
         unauthorized: "Unauthorized",
         notFound:  "Not Found",
@@ -26,8 +26,8 @@ export class ErrorHandlerService {
 
     //Called externally to override default values
     configure(options: ErrorHandlerServiceOptions) {
-        this.options = {
-            ...this.options,
+        this._options = {
+            ...this._options,
             ...options
         }
     }
@@ -36,24 +36,24 @@ export class ErrorHandlerService {
         if(error.status) {
             switch(error.status) {
                 case 400:
-                    toastr.error(this.options.badRequest);
+                    toastr.error(this._options.badRequest);
                     break;
                 case 401:
-                    toastr.error(this.options.unauthorized);
+                    toastr.error(this._options.unauthorized);
                     break;
                 case 404:
-                    toastr.error(this.options.notFound);
+                    toastr.error(this._options.notFound);
                     break;
                 case 500:   
-                    toastr.error(this.options.internalServerError);
+                    toastr.error(this._options.internalServerError);
                     break;
                 default:
-                    toastr.error(this.options.unknown);
+                    toastr.error(this._options.unknown);
                     break;
             }
         }
         else {
-            toastr.error(this.options.unknown);
+            toastr.error(this._options.unknown);
         }
     }
 }
